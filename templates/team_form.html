@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+
+{% block title %} Save team {% endblock %}
+
+{% block body %}
+<div class="card" style="width: 600px;">
+    <div class="card-body">
+        <h5 class="card-title">Save team</h5>
+        <form role="role" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|bootstrap }}
+            <a href="{% url 'all_teams' %}" class="btn btn-outline-primary">Back.</a>
+            <button type="submit" class="btn btn-outline-danger">Save</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

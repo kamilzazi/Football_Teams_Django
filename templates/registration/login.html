@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+
+{% block title %} Sign in {% endblock %}
+
+{% block body %}
+<div>
+    <div class="card" style="width: 500px;">
+      <div class="card-body">
+          <h5 class="card-title"><b>LOG IN</b></h5>
+          <form role="form" method="post">
+              {% csrf_token %}
+            {{ form|bootstrap }}
+        <p class="card-text">Log in to have access to all options on the website.</p>
+        <button type="submit" class="btn btn-secondary">Login</button>
+          </form>
+      </div>
+    </div>
+</div>
+
+
+{% endblock %}

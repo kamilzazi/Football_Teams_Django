@@ -1,0 +1,26 @@
+body {
+    color: #444;
+    padding: 50px;
+}
+
+#header {
+    width: 75%;
+}
+
+#danger {
+    width: 50%;
+}
+
+img {
+    padding: 0px;
+    margin: 0px;
+}
+
+#columns {
+    display: grid;
+    grid-template-columns: auto 250px;
+}
+
+#column {
+    width: 100%;
+}

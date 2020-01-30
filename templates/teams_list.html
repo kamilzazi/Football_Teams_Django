@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+
+{% block title %} Team list {% endblock %}
+
+{% block body %}
+
+<div id="header" class="card bg-light mb-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">{% if user.is_authenticated %}
+        Hello {{ user.username }}!&nbsp;<a href="{% url 'logout' %}" class="btn btn-primary">Logout</a></h4>
+
+          {% else %}
+          <h5>Log in to have access to all options on the website.</h5>
+          <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+          {% endif %}
+      </div>
+      <div class="card-body">
+            <h3><i class="fas fa-futbol"></i> <i>This is list of football teams.</i> <i class="fas fa-futbol"></i></h3>
+      </div>
+    </div>
+  </div>
+<div>&nbsp;</div>
+<a href="{% url 'new_team' %}" class="btn btn-outline-danger"><i class="fas fa-plus-square"></i> Add new team</a>
+<div>&nbsp;</div>
+{% for team in teams %}
+<div id="column" class="card">
+  <div id="columns" class="card-deck">
+  <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">{{ team.name }}</h4>
+        <p class="card-text">{{ team.description }}</p>
+      </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div id="img"><img src="/media/{{ team.photo }}" class="card-img-top"></div>
+    </div>
+  </div>
+</div>
+
+
+
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Country: <b>{{ team.country }}</b></li>
+    <li class="list-group-item">Founded: <b>{{ team.year }}</b></li>
+  </ul>
+  <div class="card-body">
+      <a class="btn btn-outline-danger" href="{% url 'edit_team' team.id %}"><i class="far fa-edit"></i> Edit</a>
+      <a class="btn btn-outline-danger" href="{% url 'delete_team' team.id %}"><i class="far fa-trash-alt"></i> Delete</a>
+  </div>
+</div>
+<br>
+{% endfor %}
+{% endblock %}

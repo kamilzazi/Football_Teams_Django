@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block title %} Confirm {% endblock %}
+
+{% block body %}
+<div id="danger" class="alert alert-danger" role="alert" >
+    <h4>Are you sure want to delete <u>{{team.name}}</u> from database?</h4>
+    <form method="post">
+        {% csrf_token %}
+        <a href="{% url 'all_teams' %}" class="btn btn-outline-primary">No. Back.</a>
+        <button type="submit" class="btn btn-outline-danger">Yes</button>
+    </form>
+</div>
+{% endblock %}
